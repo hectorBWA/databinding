@@ -5,9 +5,19 @@
 
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
 
-<p>{{serverCreateionStatus}}</p>
+<p *ngIf="serverCreated; else no Server">{{serverCreateionStatus}}</p>
 
 
-<p>{{serverName}}</p>
+<ng-template #noServer>
+  <p>No server was created.</p>
+</ng-template>
 
-<app-server></app-server>
+
+
+
+<p ngStyle="{backgroundColor: getBackgroundColor()}" [ngClass]="{'standard': true, 'online': (serverStatus === 'Online')}">
+  {{'Server'}} with ID {{serverId}} is {{getServerStatus()}}
+</p>
+
+
+<app-root *ngFor="let server of servers; let i = index; let firstServer = first;"></app-root>
