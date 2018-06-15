@@ -31,6 +31,8 @@ export class AppComponent {
 
   onCreateServer(){
     this.serverCreateionStatus = "hvhj";
+
+    
   }
 
   onUpdateServerName(event: Event){
